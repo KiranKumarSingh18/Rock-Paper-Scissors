@@ -154,6 +154,11 @@ h1{
   .game{
     width: 100%;
   }
+    
+   .hands img{
+    height: 286;
+    width: 250;
+  }
   
   .info h1{
     font-size: 2.2em;
