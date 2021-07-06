@@ -1,7 +1,9 @@
 const game = () => {
     let pScore = 0;
     let cScore = 0;
-  
+    let attempt = 0;
+    let dispa = 5;
+    
     //Start the Game
     const startGame = () => {
       const playBtn = document.querySelector(".info button");
@@ -9,10 +11,20 @@ const game = () => {
       const match = document.querySelector(".game");
   
       playBtn.addEventListener("click", () => {
-        introScreen.classList.add("fadeOut");
-        match.classList.add("fadeIn");
+        introScreen.classList.toggle("fadeOut");
+        match.classList.toggle("fadeIn");
+        resetScore();
       });
     };
+    
+    const resetScore = () =>{
+        cScore =0;
+        pScore =0;
+        attempt = 0;
+        dispa = 5;
+        updateScore();
+    }
+
     //Play Match
     const playMatch = () => {
       const options = document.querySelectorAll(".player-options button");
@@ -51,9 +63,40 @@ const game = () => {
     const updateScore = () => {
       const playerScore = document.querySelector(".player-score p");
       const computerScore = document.querySelector(".computer-score p");
+      const lefta =document.querySelector(".attempts-left p");
       playerScore.textContent = pScore;
       computerScore.textContent = cScore;
+      lefta.textContent = dispa;
     };
+
+    const attemptcheck = () =>{
+        if (attempt == 5){
+            const playBtn = document.querySelector(".info button");
+            const introScreen = document.querySelector(".info");
+            const match = document.querySelector(".game");
+            const winnerScore = document.querySelector(".winner-score")
+            const looserScore = document.querySelector(".looser-score")
+            introScreen.classList.toggle("fadeOut");
+            match.classList.toggle("fadeIn");
+            const fWinner = document.querySelector(".final-winner")
+            if (cScore>pScore){
+                fWinner.textContent = "🎉 Computer Won The Game 🎉";
+                winnerScore.textContent = "🎇Computer score: " + cScore + "🎇";
+                looserScore.textContent = "Player score: " + pScore;
+            }
+            else if (cScore == pScore){
+                fWinner.textContent = "🎉🎇 Match is a Tie 🎇🎉";
+                winnerScore.textContent = "Player score: " + cScore;
+                looserScore.textContent = "Computer score: " + pScore;
+            }
+            else {
+                fWinner.textContent = "🎉 Player Won The Game 🎉";
+                winnerScore.textContent = "🎇Player score: " + pScore + "🎇";
+                looserScore.textContent = "Computer score: " + cScore;
+            }
+            playBtn.textContent = "Play Again";
+        }
+    }
   
     const compareHands = (playerChoice, computerChoice) => {
       //Update Text
@@ -61,6 +104,10 @@ const game = () => {
       //Checking for a tie
       if (playerChoice === computerChoice) {
         winner.textContent = "It is a tie";
+        attempt++;
+        dispa--;
+        updateScore();
+        attemptcheck();
         return;
       }
       //Check for Rock
@@ -68,12 +115,18 @@ const game = () => {
         if (computerChoice === "scissors") {
           winner.textContent = "Player Wins";
           pScore++;
+          attempt++;
+          dispa--;
           updateScore();
+          attemptcheck();
           return;
         } else {
           winner.textContent = "Computer Wins";
           cScore++;
+          attempt++;
+          dispa--;
           updateScore();
+          attemptcheck();
           return;
         }
       }
@@ -82,12 +135,18 @@ const game = () => {
         if (computerChoice === "scissors") {
           winner.textContent = "Computer Wins";
           cScore++;
+          attempt++;
+          dispa--;
           updateScore();
+          attemptcheck();
           return;
         } else {
           winner.textContent = "Player Wins";
           pScore++;
+          attempt++;
+          dispa--;
           updateScore();
+          attemptcheck();
           return;
         }
       }
@@ -96,15 +155,22 @@ const game = () => {
         if (computerChoice === "rock") {
           winner.textContent = "Computer Wins";
           cScore++;
+          attempt++;
+          dispa--;
           updateScore();
+          attemptcheck();
           return;
         } else {
           winner.textContent = "Player Wins";
           pScore++;
+          attempt++;
+          dispa--;
           updateScore();
+          attemptcheck();
           return;
         }
       }
+      
     };
   
     //Is call all the inner function
