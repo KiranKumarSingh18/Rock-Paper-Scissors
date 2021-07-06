@@ -74,24 +74,24 @@ const game = () => {
             const playBtn = document.querySelector(".info button");
             const introScreen = document.querySelector(".info");
             const match = document.querySelector(".game");
-            const winnerScore = document.querySelector(".winner-score")
-            const looserScore = document.querySelector(".looser-score")
+            const winnerScore = document.querySelector(".winner-score");
+            const looserScore = document.querySelector(".looser-score");
             introScreen.classList.toggle("fadeOut");
             match.classList.toggle("fadeIn");
-            const fWinner = document.querySelector(".final-winner")
+            const fWinner = document.querySelector(".final-winner");
             if (cScore>pScore){
-                fWinner.textContent = "🎉 Computer Won The Game 🎉";
-                winnerScore.textContent = "🎇Computer score: " + cScore + "🎇";
+                fWinner.textContent = "Computer Won The Game";
+                winnerScore.textContent = "Computer score: " + cScore;
                 looserScore.textContent = "Player score: " + pScore;
             }
             else if (cScore == pScore){
-                fWinner.textContent = "🎉🎇 Match is a Tie 🎇🎉";
+                fWinner.textContent = "Match is a Tie";
                 winnerScore.textContent = "Player score: " + cScore;
                 looserScore.textContent = "Computer score: " + pScore;
             }
             else {
-                fWinner.textContent = "🎉 Player Won The Game 🎉";
-                winnerScore.textContent = "🎇Player score: " + pScore + "🎇";
+                fWinner.textContent = "Player Won The Game";
+                winnerScore.textContent = "Player score: " + pScore;
                 looserScore.textContent = "Computer score: " + cScore;
             }
             playBtn.textContent = "Play Again";
