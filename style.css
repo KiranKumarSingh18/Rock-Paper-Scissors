@@ -28,6 +28,11 @@
     padding: 0.6em;
 }
 
+.attempts-left{
+    color: whitesmoke;
+    text-shadow: 2px 2px #296D60;
+}
+
 .info {
     height: 50vh;
     align-items: center;
@@ -90,6 +95,9 @@ h1{
     pointer-events: all;
 }
 
+.info p{
+    font-size: 2em;
+}
 @keyframes shakePlayer {
     0% {
       transform: rotateY(180deg) translateY(0px);
@@ -151,10 +159,47 @@ h1{
   }
 
 @media(max-width: 600px) {
+  .scores h2{
+    font-size: 1.3em;
+  }
+
+  .scores p{
+    font-size: 1em;
+    padding: 0.4em;
+  }
+ 
   .game{
     width: 100%;
-  }
     
+    
+  }
+
+  .hands img{
+    height: 254;
+    width: 218;
+  }
+  
+  .info h1{
+    font-size: 2.2em;
+  }
+}
+
+@media(max-width:400px){
+  .scores h2{
+    font-size: 1em;
+  }
+
+  .scores p{
+    font-size: 1em;
+    padding: 0.4em;
+  }
+ 
+  .game{
+    width: 100%;
+    
+    
+  }
+
   .hands img{
     height: 254;
     width: 218;
